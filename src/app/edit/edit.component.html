@@ -1,0 +1,61 @@
+<p id="p">Employee Update</p>
+<br>
+<h3>
+{{"Employee Name:"+employees.name+" is Selected"}}
+</h3>
+<br>
+<div class="container  d-flex justify-content-center">
+    <form autocomplete="off" method="post"  [formGroup]="editform">
+        <div class="mb-3">
+            <label for="name" class="form-label">Employee Name</label>
+            <input type="text" class="form-control" id="name" name="name" formControlName="name" >
+          
+            <div *ngIf="name.errors?.['required'] && name.touched">
+            <p style="color: red;">Name Should not be empty!</p>
+            </div>
+ 
+<div *ngIf="name.errors?.['minlength']">
+<p style="color: red;">Should be More Than 3 Characters</p>
+</div>
+            <div *ngIf="name.errors?.['pattern']">
+<p style="color: red;">Only Alphabets are Accepted</p>
+</div>
+
+         </div> 
+         
+         
+         <div class="mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input type="text" class="form-control" id="age" name="age" formControlName="age" >
+         
+         <div *ngIf="age.errors?.['required'] && age.touched">
+        <p style="color: red;">Age Should not be empty!</p>
+         </div>
+       
+      <div *ngIf="age.errors?.['pattern']">
+       <p style="color: red;">Only Numbers are allowed! </p>
+      </div>
+         
+      </div>  
+
+
+         <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <input type="text" class="form-control" id="gender"  name="gender" formControlName="gender" >
+            
+            <div *ngIf="gender && gender.errors?.['required'] && gender.touched">
+               <p style="color: red;">Gender Should not be empty</p>
+            </div>
+            <div *ngIf="gender.errors?.['pattern']">
+               <p style="color: red;">Only Alphabets are Accepted!</p>
+               </div>
+            
+         </div>  
+
+        <button  [disabled]="editform.invalid"  type="submit" class="btn btn-primary" (click)="updatesubmit()">Submit</button>
+        &nbsp; <button type="reset" class="btn btn-primary">Reset</button>
+    
+    </form>
+    </div>
+    
+    <router-outlet></router-outlet>
