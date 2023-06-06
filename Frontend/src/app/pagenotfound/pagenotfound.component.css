@@ -1,0 +1,19 @@
+h1{
+    text-align: center;
+
+}
+
+
+
+
+h2{
+    text-align: center;
+}
+
+
+#img
+{
+    display: flex;
+    justify-content: center;
+padding-top: 15%;
+}
